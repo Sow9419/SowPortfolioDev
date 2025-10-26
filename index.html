@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio Développeur React</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      :root {
+        --background: 0 0% 100%;
+        --foreground: 240 10% 4%;
+        --card: 0 0% 100%;
+        --card-foreground: 240 10% 4%;
+        --popover: 0 0% 100%;
+        --popover-foreground: 240 10% 4%;
+        --primary: 211 100% 50%;
+        --primary-foreground: 0 0% 100%;
+        --secondary: 210 9% 45%;
+        --secondary-foreground: 0 0% 100%;
+        --muted: 220 14% 96%;
+        --muted-foreground: 220 9% 46%;
+        --accent: 220 14% 96%;
+        --accent-foreground: 240 6% 10%;
+        --destructive: 0 84% 60%;
+        --destructive-foreground: 0 0% 100%;
+        --border: 220 13% 91%;
+        --input: 220 13% 91%;
+        --ring: 211 100% 50%;
+      }
+
+      .dark {
+        --background: 224 71% 4%;
+        --foreground: 0 0% 95%;
+        --card: 224 71% 8%;
+        --card-foreground: 0 0% 95%;
+        --popover: 224 71% 4%;
+        --popover-foreground: 0 0% 95%;
+        --primary: 206 94% 63%;
+        --primary-foreground: 240 6% 10%;
+        --secondary: 210 10% 67%;
+        --secondary-foreground: 0 0% 100%;
+        --muted: 215 28% 17%;
+        --muted-foreground: 218 11% 65%;
+        --accent: 215 28% 17%;
+        --accent-foreground: 0 0% 95%;
+        --destructive: 0 63% 31%;
+        --destructive-foreground: 0 0% 100%;
+        --border: 215 28% 17%;
+        --input: 215 28% 17%;
+        --ring: 206 94% 63%;
+      }
+
+      .dark body {
+        background-color: hsl(var(--background));
+        background-image: radial-gradient(hsl(var(--foreground) / 0.03) 1px, transparent 1px);
+        background-size: 16px 16px;
+      }
+    </style>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              border: 'hsl(var(--border))',
+              input: 'hsl(var(--input))',
+              ring: 'hsl(var(--ring))',
+              background: 'hsl(var(--background))',
+              foreground: 'hsl(var(--foreground))',
+              primary: {
+                DEFAULT: 'hsl(var(--primary))',
+                foreground: 'hsl(var(--primary-foreground))',
+              },
+              secondary: {
+                DEFAULT: 'hsl(var(--secondary))',
+                foreground: 'hsl(var(--secondary-foreground))',
+              },
+              destructive: {
+                DEFAULT: 'hsl(var(--destructive))',
+                foreground: 'hsl(var(--destructive-foreground))',
+              },
+              muted: {
+                DEFAULT: 'hsl(var(--muted))',
+                foreground: 'hsl(var(--muted-foreground))',
+              },
+              accent: {
+                DEFAULT: 'hsl(var(--accent))',
+                foreground: 'hsl(var(--accent-foreground))',
+              },
+              popover: {
+                DEFAULT: 'hsl(var(--popover))',
+                foreground: 'hsl(var(--popover-foreground))',
+              },
+              card: {
+                DEFAULT: 'hsl(var(--card))',
+                foreground: 'hsl(var(--card-foreground))',
+              },
+            },
+            animation: {
+              'fade-in-down': 'fade-in-down 0.6s ease-out forwards',
+              'slide-in-up': 'slide-in-up 0.6s ease-out forwards',
+              'subtle-glow': 'subtle-glow 2s ease-in-out infinite alternate',
+              'scroll-left': 'scroll-left 40s linear infinite',
+              'scroll-right': 'scroll-right 40s linear infinite',
+            },
+            keyframes: {
+              'fade-in-down': {
+                '0%': { opacity: '0', transform: 'translateY(-10px)' },
+                '100%': { opacity: '1', transform: 'translateY(0)' },
+              },
+              'slide-in-up': {
+                '0%': { opacity: '0', transform: 'translateY(20px)' },
+                '100%': { opacity: '1', transform: 'translateY(0)' },
+              },
+              'subtle-glow': {
+                '0%': { boxShadow: '0 0 5px 0px hsl(var(--primary) / 0.2)' },
+                '100%': { boxShadow: '0 0 20px 2px hsl(var(--primary) / 0.1)' },
+              },
+              'scroll-left': {
+                '0%': { transform: 'translateX(0)' },
+                '100%': { transform: 'translateX(-100%)' },
+              },
+              'scroll-right': {
+                '0%': { transform: 'translateX(-100%)' },
+                '100%': { transform: 'translateX(0)' },
+              },
+            }
+          }
+        }
+      }
+    </script>
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@18.2.0",
+    "react-dom/client": "https://esm.sh/react-dom@18.2.0/client",
+    "framer-motion": "https://esm.sh/framer-motion@11.2.10",
+    "lucide-react": "https://esm.sh/lucide-react@0.395.0",
+    "usehooks-ts": "https://esm.sh/usehooks-ts@3.1.0",
+    "clsx": "https://esm.sh/clsx@2.1.1",
+    "tailwind-merge": "https://esm.sh/tailwind-merge@2.3.0",
+    "@/": "./",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/"
+  }
+}
+</script>
+</head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>

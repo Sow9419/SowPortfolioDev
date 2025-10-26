@@ -15,7 +15,8 @@ export interface BadgeProps extends React.HTMLAttributes<HTMLDivElement> {
   variant?: keyof typeof badgeVariantsDef.variants;
 }
 
-function Badge({ className, variant = 'default', ...props }: BadgeProps) {
+// FIX: Refactored to a const with React.FC to fix type inference issues with `key` and `className` props.
+const Badge: React.FC<BadgeProps> = ({ className, variant = 'default', ...props }) => {
   return (
     <div className={cn(badgeVariantsDef.base, badgeVariantsDef.variants[variant], className)} {...props} />
   );

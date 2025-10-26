@@ -26,6 +26,15 @@
         --border: 220 13% 91%;
         --input: 220 13% 91%;
         --ring: 211 100% 50%;
+
+        /* Added for Aurora Background */
+        --white: #ffffff;
+        --black: #000000;
+        --blue-500: #3b82f6;
+        --indigo-300: #a5b4fc;
+        --blue-300: #93c5fd;
+        --violet-200: #ddd6fe;
+        --blue-400: #60a5fa;
       }
 
       .dark {
@@ -52,8 +61,6 @@
 
       .dark body {
         background-color: hsl(var(--background));
-        background-image: radial-gradient(hsl(var(--foreground) / 0.03) 1px, transparent 1px);
-        background-size: 16px 16px;
       }
     </style>
     <script>
@@ -102,6 +109,7 @@
               'subtle-glow': 'subtle-glow 2s ease-in-out infinite alternate',
               'scroll-left': 'scroll-left 40s linear infinite',
               'scroll-right': 'scroll-right 40s linear infinite',
+              'aurora': 'aurora 60s linear infinite',
             },
             keyframes: {
               'fade-in-down': {
@@ -123,6 +131,14 @@
               'scroll-right': {
                 '0%': { transform: 'translateX(-100%)' },
                 '100%': { transform: 'translateX(0)' },
+              },
+              'aurora': {
+                from: {
+                  backgroundPosition: '50% 50%, 50% 50%',
+                },
+                to: {
+                  backgroundPosition: '350% 50%, 350% 50%',
+                },
               },
             }
           }

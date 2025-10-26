@@ -7,6 +7,7 @@ import { Projects } from './components/Projects';
 import { Experience } from './components/Experience';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
+import { AuroraBackground } from './components/ui/aurora-background';
 
 const App: React.FC = () => {
   const [theme, setTheme] = useState<Theme>(Theme.Light);
@@ -25,7 +26,7 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="bg-background text-foreground min-h-screen transition-colors duration-300">
+    <AuroraBackground className="min-h-screen transition-colors duration-300">
       <Header theme={theme} toggleTheme={toggleTheme} />
       <main>
         <Hero />
@@ -35,7 +36,7 @@ const App: React.FC = () => {
         <Contact />
       </main>
       <Footer />
-    </div>
+    </AuroraBackground>
   );
 };
 

@@ -35,7 +35,9 @@ const skillsList = [
   { name: 'SQL', icon: <SqlIcon className="w-10 h-10" /> },
 ];
 
-const SkillCard = ({ skill }: { skill: (typeof skillsList)[0] }) => (
+// FIX: Refactored to a typed functional component to resolve issues with React's `key` prop type inference.
+type SkillCardProps = { skill: (typeof skillsList)[0] };
+const SkillCard: React.FC<SkillCardProps> = ({ skill }) => (
     <div className="flex-shrink-0 w-36 h-36 flex flex-col items-center justify-center p-4 bg-card/60 border border-border/50 rounded-xl shadow-sm transition-all duration-300 ease-out backdrop-blur-sm hover:bg-card/80 hover:shadow-primary/20 hover:shadow-lg hover:-translate-y-1">
       {skill.icon}
       <p className="mt-3 text-sm font-semibold text-center text-foreground">

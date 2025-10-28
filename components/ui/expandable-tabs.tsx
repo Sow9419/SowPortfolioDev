@@ -75,7 +75,7 @@ export function ExpandableTabs({
     <div
       ref={outsideClickRef}
       className={cn(
-        "flex flex-wrap items-center gap-2 rounded-2xl border bg-card/80 p-1 shadow-sm",
+        "flex flex-wrap items-center gap-2 rounded-2xl border bg-card p-1 shadow-sm",
         className
       )}
     >
@@ -111,7 +111,6 @@ export function ExpandableTabs({
                     transition={transition}
                     className="overflow-hidden whitespace-nowrap"
                   >
-                    {tab.title}
                   </motion.span>
                 )}
               </AnimatePresence>

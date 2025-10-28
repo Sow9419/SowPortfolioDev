@@ -111,7 +111,6 @@ export function ExpandableTabs({
                     transition={transition}
                     className="overflow-hidden whitespace-nowrap"
                   >
-                    {tab.title}
                   </motion.span>
                 )}
               </AnimatePresence>

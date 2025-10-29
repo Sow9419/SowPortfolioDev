@@ -38,9 +38,15 @@ const Header: React.FC<HeaderProps> = ({ theme, toggleTheme }) => {
   };
 
   return (
-    <header className="sticky top-0 z-50 animate-fade-in-down">
+    <header className="sticky top-0 z-50 bg-background/80 backdrop-blur-sm animate-fade-in-down border-b border-border/50">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
+          <div className="w-24 flex-shrink-0">
+            <a href="#accueil" onClick={scrollToTop} className="text-2xl font-bold text-primary tracking-tight">
+              JD.
+            </a>
+          </div>
+          
           <div className="flex-1 flex justify-center">
             <ExpandableTabs tabs={tabs} onChange={handleTabChange} />
           </div>

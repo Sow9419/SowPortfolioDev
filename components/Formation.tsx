@@ -281,7 +281,7 @@ export default function Formation() {
             { value: '4+', label: 'Diplômes', gradient: 'from-blue-600 to-cyan-600 dark:from-blue-400 dark:to-cyan-400', icon: Award },
             { value: '9+', label: "Années d'études", gradient: 'from-purple-600 to-fuchsia-600 dark:from-purple-400 dark:to-fuchsia-400', icon: BookOpen },
             { value: '3', label: 'Institutions', gradient: 'from-emerald-600 to-teal-600 dark:from-emerald-400 dark:to-teal-400', icon: GraduationCap },
-            { value: '60%', label: 'Master en cours', gradient: 'from-amber-600 to-orange-600 dark:from-amber-400 dark:to-orange-400', icon: Sparkles }
+            { value: '20%', label: 'Master en cours', gradient: 'from-amber-600 to-orange-600 dark:from-amber-400 dark:to-orange-400', icon: Sparkles }
           ].map((stat, index) => {
             const StatIcon = stat.icon;
             return (

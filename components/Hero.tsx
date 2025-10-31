@@ -113,7 +113,7 @@ const Hero: React.FC = () => {
               <div className="absolute inset-0 bg-gradient-to-br from-orange-200/20 via-transparent to-blue-200/20 pointer-events-none"></div>
               <div className="flex flex-col items-center text-center h-full justify-center p-4 sm:p-5 relative z-10">
                 <div className="w-24 h-24 rounded-full gradient-animated flex items-center justify-center mb-3 ring-4 ring-white/50 dark:ring-gray-700/50 shadow-xl animate-scale-in">
-                  <img src="components/projetmedia/sowimage.png" alt="" className="w-full h-full rounded-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                  <img src="public\projetmedia\sowimage.png" alt="" className="w-full h-full rounded-full object-cover transition-transform duration-700 group-hover:scale-110" />
                 </div>
                 <h1 className="text-2xl font-bold mb-1 animate-scale-in" style={{ animationDelay: '0.1s' }}>Sékou Sallah Sow</h1>
                 <p className="text-muted-foreground mb-3 animate-scale-in" style={{ animationDelay: '0.2s' }}>DEVELOPPEUR – DEVOPS OFFICER</p>
@@ -129,18 +129,18 @@ const Hero: React.FC = () => {
                     </a>
                   </Button>
                   <Button variant="outline" size="icon" className=" bg-white h-8 w-8 transition-all duration-300 hover:scale-110 hover:rotate-6 hover:shadow-md" asChild>
-                    <a href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="Profil GitHub">
-                      <img src="components/projetmedia/github.png" alt="GitHub" className="h-6 w-6" />
+                    <a href="https://github.com/SekouSallah" target="_blank" rel="noopener noreferrer" aria-label="Profil GitHub">
+                      <img src="public\projetmedia\github.png" alt="GitHub" className="h-6 w-6" />
                     </a>
                   </Button>
                   <Button variant="outline" size="icon" className=" bg-white h-8 w-8 transition-all duration-300 hover:scale-110 hover:rotate-6 hover:shadow-md" asChild>
-                    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="Profil LinkedIn">
-                      <img src="components\projetmedia\linkedin.png" alt="LinkedIn" className="h-6 w-6" />
+                    <a href="http://www.linkedin.com/in/s%C3%A9kou-sow-379773247" target="_blank" rel="noopener noreferrer" aria-label="Profil LinkedIn">
+                      <img src="public\projetmedia\linkedin.png" alt="LinkedIn" className="h-6 w-6" />
                     </a>
                   </Button>
                   <Button variant="ghost" size="icon" className="h-8 w-8 transition-all duration-300 hover:scale-110 hover:rotate-6" >
-                    <a href="https://whatsapp.com" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
-                      <img src="components\projetmedia\whatsapp (2).png" alt="WhatsApp" className="h-7 w-7" />
+                    <a href="https://wa.me//22374007045" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+                      <img src="public\projetmedia\whatsapp (2).png" alt="WhatsApp" className="h-7 w-7" />
                     </a>
                   </Button>
                 </div>
@@ -153,7 +153,7 @@ const Hero: React.FC = () => {
                 <div className="absolute inset-0 bg-gradient-to-br from-orange-400/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 <div className="flex items-center h-full p-2 relative z-10">
                     <div className="rounded-full mr-2 transition-transform duration-300 group-hover:scale-110">
-                        <img src="components\projetmedia\ux-design.png" alt="Frontend" className="h-7 w-7" />
+                        <img src="public\projetmedia\ux-design.png" alt="Frontend" className="h-7 w-7" />
                     </div>
                     <div className="flex-grow">
                         <h3 className="font-medium text-sm">Frontend</h3>
@@ -168,7 +168,7 @@ const Hero: React.FC = () => {
                 <div className="absolute inset-0 bg-gradient-to-br from-blue-400/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 <div className="flex items-center h-full p-2 relative z-10">
                     <div className="rounded-full mr-2 transition-transform duration-300 group-hover:scale-110">
-                        <img src="components\projetmedia\continuous.png" alt="Backend" className="h-7 w-7" />
+                        <img src="public\projetmedia\continuous.png" alt="Backend" className="h-7 w-7" />
                     </div>
                     <div className="flex-grow">
                         <h3 className="font-medium text-sm">Backend</h3>
@@ -183,7 +183,7 @@ const Hero: React.FC = () => {
                 <div className="absolute inset-0 bg-gradient-to-br from-purple-400/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 <div className="flex items-center h-full p-2 relative z-10">
                     <div className="p-2 rounded-full bg-background/50 mr-1 transition-transform duration-300 group-hover:scale-110">
-                        <img src="components\projetmedia\server-control.png" alt="DevOps" className="h-7 w-7" />
+                        <img src="public\projetmedia\server-control.png" alt="DevOps" className="h-7 w-7" />
                     </div>
                     <div className="flex-grow">
                         <h3 className="font-medium text-sm">DevOps</h3>

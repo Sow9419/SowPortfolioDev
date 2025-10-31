@@ -18,29 +18,32 @@ import FigmaIcon from './icons/skills/FigmaIcon';
 import { Sparkles } from 'lucide-react';
 
 const skillsList = [
-  { name: 'JavaScript', icon: <JavascriptIcon className="w-10 h-10" /> },
-  { name: 'TypeScript', icon: <TypescriptIcon className="w-10 h-10" /> },
-  { name: 'React', icon: <ReactIcon className="w-10 h-10" /> },
-  { name: 'Next.js', icon: <NextjsIcon className="w-10 h-10" /> },
-  { name: 'Node.js', icon: <NodejsIcon className="w-10 h-10" /> },
-  { name: 'Tailwind CSS', icon: <TailwindIcon className="w-10 h-10" /> },
-  { name: 'Python', icon: <PythonIcon className="w-10 h-10" /> },
-  { name: 'PostgreSQL', icon: <PostgresqlIcon className="w-10 h-10" /> },
-  { name: 'MongoDB', icon: <MongodbIcon className="w-10 h-10" /> },
-  { name: 'Git', icon: <GitIcon className="w-10 h-10" /> },
-  { name: 'Docker', icon: <DockerIcon className="w-10 h-10" /> },
-  { name: 'AWS', icon: <AwsIcon className="w-10 h-10" /> },
-  { name: 'Figma', icon: <FigmaIcon className="w-10 h-10" /> },
-  { name: 'Vue.js', icon: <VuejsIcon className="w-10 h-10" /> },
-  { name: 'Express', icon: <ExpressIcon className="w-10 h-10" /> },
-  { name: 'SQL', icon: <SqlIcon className="w-10 h-10" /> },
+  { name: 'Java', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg', color: '#007396' },
+  { name: 'Spring Boot', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg', color: '#6DB33F' },
+  { name: 'Quarkus', logo: 'https://design.jboss.org/quarkus/logo/final/SVG/quarkus_icon_rgb_default.svg', color: '#4695EB' },
+  { name: 'NestJS', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nestjs/nestjs-original.svg', color: '#E0234E' },
+  { name: 'Node.js', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg', color: '#339933' },
+  { name: 'TypeScript', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg', color: '#3178C6' },
+  { name: 'Ionic', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ionic/ionic-original.svg', color: '#3880FF' },
+  { name: 'Angular', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angular/angular-original.svg', color: '#DD0031' },
+  { name: 'Jenkins', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jenkins/jenkins-original.svg', color: '#D24939' },
+  { name: 'Kubernetes', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg', color: '#326CE5' },
+  { name: 'Docker', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg', color: '#2496ED' },
+  { name: 'Grafana', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/grafana/grafana-original.svg', color: '#F46800' },
+  { name: 'Prometheus', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/prometheus/prometheus-original.svg', color: '#E6522C' },
+  { name: 'Ansible', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ansible/ansible-original.svg', color: '#EE0000' },
+  { name: 'Flutter', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg', color: '#02569B' },
+  { name: 'Dart', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dart/dart-original.svg', color: '#0175C2' },
+  { name: 'Terraform', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/terraform/terraform-original.svg', color: '#7B42BC' },
+  { name: 'ArgoCD', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/argocd/argocd-original.svg', color: '#F05032' },
+
 ];
 
 // FIX: Refactored to a typed functional component to resolve issues with React's `key` prop type inference.
 type SkillCardProps = { skill: (typeof skillsList)[0] };
 const SkillCard: React.FC<SkillCardProps> = ({ skill }) => (
     <div className="flex-shrink-0 w-36 h-36 flex flex-col items-center justify-center p-4 bg-card/60 border border-border/50 rounded-xl shadow-sm transition-all duration-300 ease-out backdrop-blur-sm hover:bg-card/80 hover:shadow-primary/20 hover:shadow-lg hover:-translate-y-1">
-      {skill.icon}
+      <img src={skill.logo} alt={skill.name} className="w-12 h-12" />
       <p className="mt-3 text-sm font-semibold text-center text-foreground">
         {skill.name}
       </p>

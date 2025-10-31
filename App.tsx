@@ -28,7 +28,7 @@ const App: React.FC = () => {
   return (
     <AuroraBackground>
       <Header theme={theme} toggleTheme={toggleTheme} />
-      <main>
+      <main className="lg:ml-20 pb-20 lg:pb-0">
         <Hero />
         <Skills />
         <Projects />

@@ -35,7 +35,7 @@ const Header: React.FC<HeaderProps> = ({ theme, toggleTheme }) => {
 
   return (
     <>
-      <header className="hidden lg:flex flex-col h-screen sticky top-0 z-50 w-20 bg-background/95 backdrop-blur-xl border-r border-border/30 py-8 gap-6 items-center shadow-lg">
+      <header className="hidden lg:flex flex-col h-screen sticky top-0 z-50 w-14 bg-background/95 backdrop-blur-xl border-r border-border/30 py-8 gap-6 items-center shadow-lg">
         <a
           href="#accueil"
           onClick={(e) => {

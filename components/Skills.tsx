@@ -15,6 +15,7 @@ import GitIcon from './icons/skills/GitIcon';
 import DockerIcon from './icons/skills/DockerIcon';
 import AwsIcon from './icons/skills/AwsIcon';
 import FigmaIcon from './icons/skills/FigmaIcon';
+import { Sparkles } from 'lucide-react';
 
 const skillsList = [
   { name: 'JavaScript', icon: <JavascriptIcon className="w-10 h-10" /> },
@@ -54,8 +55,13 @@ export function Skills() {
   return (
     <section id="compétences" className="py-12 scroll-mt-20 animate-slide-in-up">
       <div className="container mx-auto">
-        <h2 className="text-3xl font-bold mb-12 text-center">Technologies & Outils</h2>
-        
+        <div className="relative flex justify-center">
+          <div className="inline-flex items-center gap-3 mb-6 px-6 py-3 bg-white/80 dark:bg-slate-800/80 backdrop-blur-xl rounded-full border border-slate-200 dark:border-slate-700 shadow-lg">
+              <Sparkles className="w-5 h-5 text-blue-600 dark:text-blue-400 animate-spin" style={{ animationDuration: '3s' }} />
+              <span className="text-sm font-semibold text-slate-700 dark:text-slate-300">Outils et Technologies</span>
+            </div> 
+        </div>
+             
         <div 
           className="relative group flex flex-col gap-6"
           style={{ maskImage: 'linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)' }}

@@ -10,69 +10,69 @@ export function Projects() {
   
   const projects = [
     {
-      title: "Plateforme E-Commerce",
-      description: "Plateforme de commerce en ligne complète avec panier, paiement et gestion des commandes.",
-      tags: ["React", "Node.js", "PostgreSQL", "Stripe"],
+      title: "App Gestion D'abonnement",
+      description: "Gérer tous vos abonnement via l'application PayMe",
+      tags: ["Flutter", "Node.js", "PostgreSQL", "Stripe"],
       stars: 124,
-      language: "TypeScript",
-      image: "https://images.unsplash.com/photo-1557821552-17105176677c?w=800&q=80",
-      author: "John Doe",
-      avatar: "JD"
+      language: "Dart",
+      image: "https://i.pinimg.com/1200x/24/53/67/245367ff08be3d878c23f238cd833fda.jpg",
+      author: "Sékou Sallah Sow",
+      avatar: "SS"
     },
     {
-      title: "App de Gestion de Tâches",
-      description: "Application de gestion de tâches collaborative avec temps réel et notifications.",
-      tags: ["Next.js", "Supabase", "Tailwind CSS"],
+      title: "Bank To wallet",
+      description: "Application de transaction mobile BACEAO",
+      tags: ["Flutter", "MongoDB", "SPRING	BOOT"],
       stars: 89,
-      language: "TypeScript",
-      image: "https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=800&q=80",
-      author: "Jane Smith",
-      avatar: "JS"
+      language: "Dart",
+      image: "https://i.pinimg.com/736x/95/72/6f/95726f21abcd687e2048636b1844fa1a.jpg",
+      author: "Sékou Sallah Sow",
+      avatar: "SS"
     },
     {
-      title: "Tableau de Bord Analytique",
-      description: "Tableau de bord analytique avec visualisations interactives et rapports personnalisés.",
-      tags: ["React", "D3.js", "Express", "MongoDB"],
+      title: "POS Management",
+      description: "Application de gestion de point de vente.",
+      tags: ["Next JS", "Node JS", "Express", "MongoDB"],
       stars: 156,
       language: "JavaScript",
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
-      author: "Mike Johnson",
-      avatar: "MJ"
+      image: "https://i.pinimg.com/1200x/f4/54/4b/f4544bd1f4f90fdd0bdeb7afabc34281.jpg",
+      author: "Sékou Sallah Sow",
+      avatar: "SS"
     },
     {
-      title: "Portfolio Personnel",
-      description: "Site portfolio moderne avec animations fluides et design responsive.",
-      tags: ["React", "Framer Motion", "Tailwind"],
+      title: "App Project Management",
+      description: "ERP, système de gestion financière",
+      tags: ["Angular", "SPRING Boot", "Tailwind"],
       stars: 67,
       language: "TypeScript",
-      image: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=800&q=80",
-      author: "Sarah Lee",
-      avatar: "SL"
+      image: "https://i.pinimg.com/736x/00/ab/a1/00aba1df22489189fc1359cc7b091456.jpg",
+      author: "Sékou Sallah Sow",
+      avatar: "SS"
     },
     {
-      title: "API Rest Sécurisée",
+      title: "Attractive Taxi App",
       description: "API RESTful avec authentification JWT, rate limiting et documentation Swagger.",
-      tags: ["Node.js", "Express", "JWT", "Swagger"],
+      tags: ["Flutter", "Express", "JWT", "Swagger", "PostgreSQL"],
       stars: 203,
-      language: "JavaScript",
-      image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80",
-      author: "Tom Brown",
-      avatar: "TB"
+      language: "Dart/TypeScript",
+      image: "https://i.pinimg.com/1200x/49/c5/39/49c5394dadf5f5aad3ba3ceb2b1b1e22.jpg",
+      author: "Sékou Sallah Sow",
+      avatar: "SS"
     },
     {
-      title: "Chat en Temps Réel",
-      description: "Application de messagerie instantanée avec rooms, partage de fichiers et emojis.",
-      tags: ["Socket.io", "React", "Redis", "MongoDB"],
+      title: "Explorateur AI",
+      description: "",
+      tags: ["Socket.io", "Next", "Redis", "MongoDB"],
       stars: 145,
       language: "TypeScript",
-      image: "https://images.unsplash.com/photo-1611606063065-ee7946f0787a?w=800&q=80",
-      author: "Emma Wilson",
-      avatar: "EW"
+      image: "https://i.pinimg.com/1200x/eb/20/48/eb2048fd4908d00f6804d278b9dce3f8.jpg",
+      author: "Sékou Sallah Sow",
+      avatar: "SS"
     }
   ];
 
   return (
-    <section id="projets" className="py-6 px-4 sm:px-6 lg:px-8 bg-background scroll-mt-20">
+    <section id="projets" className="py-6 px-4 sm:px-6 lg:px-8 scroll-mt-20">
       <div className="container mx-auto max-w-7xl">
         <div className="text-center mb-6">
           <div className="relative">

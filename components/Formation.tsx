@@ -84,7 +84,7 @@ export default function Formation() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 py-20 px-4 sm:px-6 lg:px-8 transition-colors duration-300">
+    <div className="min-h-screen py-20 px-4 sm:px-6 lg:px-8 transition-colors duration-300">
       <div className="max-w-7xl mx-auto">
         {/* Header Section Ultra Moderne */}
         <div className="text-center mb-6 relative">

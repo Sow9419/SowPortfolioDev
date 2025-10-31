@@ -113,7 +113,7 @@ const Hero: React.FC = () => {
               <div className="absolute inset-0 bg-gradient-to-br from-orange-200/20 via-transparent to-blue-200/20 pointer-events-none"></div>
               <div className="flex flex-col items-center text-center h-full justify-center p-4 sm:p-5 relative z-10">
                 <div className="w-24 h-24 rounded-full gradient-animated flex items-center justify-center mb-3 ring-4 ring-white/50 dark:ring-gray-700/50 shadow-xl animate-scale-in">
-                  <span className="text-3xl font-bold text-white drop-shadow-lg">SS</span>
+                  <img src="components/projetmedia/sowimage.png" alt="" className="w-full h-full rounded-full object-cover transition-transform duration-700 group-hover:scale-110" />
                 </div>
                 <h1 className="text-2xl font-bold mb-1 animate-scale-in" style={{ animationDelay: '0.1s' }}>Sékou Sallah Sow</h1>
                 <p className="text-muted-foreground mb-3 animate-scale-in" style={{ animationDelay: '0.2s' }}>DEVELOPPEUR – DEVOPS OFFICER</p>
@@ -128,17 +128,17 @@ const Hero: React.FC = () => {
                       Contact
                     </a>
                   </Button>
-                  <Button variant="outline" size="icon" className="h-8 w-8 transition-all duration-300 hover:scale-110 hover:rotate-6 hover:shadow-md" asChild>
+                  <Button variant="outline" size="icon" className=" bg-white h-8 w-8 transition-all duration-300 hover:scale-110 hover:rotate-6 hover:shadow-md" asChild>
                     <a href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="Profil GitHub">
                       <img src="components/projetmedia/github.png" alt="GitHub" className="h-6 w-6" />
                     </a>
                   </Button>
-                  <Button variant="outline" size="icon" className="h-8 w-8 transition-all duration-300 hover:scale-110 hover:rotate-6 hover:shadow-md" asChild>
+                  <Button variant="outline" size="icon" className=" bg-white h-8 w-8 transition-all duration-300 hover:scale-110 hover:rotate-6 hover:shadow-md" asChild>
                     <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="Profil LinkedIn">
                       <img src="components\projetmedia\linkedin.png" alt="LinkedIn" className="h-6 w-6" />
                     </a>
                   </Button>
-                  <Button variant="none" size="icon" className="h-8 w-8 transition-all duration-300 hover:scale-110 hover:rotate-6" >
+                  <Button variant="ghost" size="icon" className="h-8 w-8 transition-all duration-300 hover:scale-110 hover:rotate-6" >
                     <a href="https://whatsapp.com" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
                       <img src="components\projetmedia\whatsapp (2).png" alt="WhatsApp" className="h-7 w-7" />
                     </a>
@@ -202,7 +202,7 @@ const Hero: React.FC = () => {
             <BentoGridItem className="p-0 overflow-hidden h-64 transition-all duration-500 bg-orange-50 dark:bg-gray-800 border-none group relative">
               <div className="absolute inset-0 bg-gradient-to-t from-orange-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 pointer-events-none"></div>
               <img 
-                  src="components\projetmedia\510bbf476ada9dc8786c983a252c07c7.jpg"
+                  src="https://i.pinimg.com/736x/9e/0e/2a/9e0e2a8be395cbebe80fe4296dcb4a0e.jpg"
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
               />
             </BentoGridItem>

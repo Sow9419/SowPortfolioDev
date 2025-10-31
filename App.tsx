@@ -26,7 +26,7 @@ const App: React.FC = () => {
   };
 
   return (
-    <AuroraBackground className="min-h-screen transition-colors duration-300">
+    <AuroraBackground>
       <Header theme={theme} toggleTheme={toggleTheme} />
       <main>
         <Hero />

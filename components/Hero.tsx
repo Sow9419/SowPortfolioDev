@@ -1,95 +1,298 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Button } from "./ui/button";
 import GithubIcon from "./icons/GithubIcon";
 import LinkedinIcon from "./icons/LinkedinIcon";
 import MailIcon from "./icons/MailIcon";
-import MapPinIcon from "./icons/MapPinIcon";
-import LinkIcon from "./icons/LinkIcon";
+import ReactIcon from './icons/skills/ReactIcon';
+import NodejsIcon from './icons/skills/NodejsIcon';
+import AwsIcon from './icons/skills/AwsIcon';
+import MapPinIcon from './icons/MapPinIcon';
+import LinkIcon from './icons/LinkIcon';
+import { BentoGridItem } from './ui/bento-grid';
+
+const BackgroundVectors = () => {
+  return (
+    <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-10">
+      <svg className="absolute top-0 left-0 w-96 h-96 animate-float" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <path fill="currentColor" className="text-orange-400" d="M44.7,-76.4C58.8,-69.2,71.8,-59.1,79.9,-45.8C88,-32.4,91.2,-16.2,90.1,-0.5C89,15.2,83.6,30.4,75.4,43.9C67.2,57.4,56.2,69.2,42.8,76.8C29.4,84.4,14.7,87.8,-0.3,88.3C-15.3,88.8,-30.6,86.4,-44.3,79.1C-58,71.8,-70.1,59.6,-78.2,45.2C-86.3,30.8,-90.4,14.2,-89.7,-2.1C-89,-18.4,-83.5,-36.8,-74.3,-50.7C-65.1,-64.6,-52.2,-74,-38.1,-80.8C-24,-87.6,-8.8,-91.8,4.6,-98.9C18,-106,33.9,-116,44.7,-76.4Z" transform="translate(100 100)" />
+      </svg>
+      
+      <svg className="absolute top-1/4 right-0 w-80 h-80 animate-float-delayed" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <path fill="currentColor" className="text-blue-400" d="M39.5,-66.3C51.4,-58.5,61.4,-47.6,67.8,-35.1C74.2,-22.6,77,-8.5,76.3,5.7C75.6,19.9,71.4,34.2,63.4,45.8C55.4,57.4,43.6,66.3,30.4,71.1C17.2,75.9,2.6,76.6,-12.3,75.4C-27.2,74.2,-42.4,71.1,-55.1,63.5C-67.8,55.9,-78,43.8,-82.7,30.1C-87.4,16.4,-86.6,1.1,-82.3,-12.8C-78,-26.7,-70.2,-39.2,-59.6,-47.5C-49,-55.8,-35.6,-59.9,-22.8,-67.3C-10,-74.7,2.2,-85.4,14.8,-87.2C27.4,-89,40.4,-82,39.5,-66.3Z" transform="translate(100 100)" />
+      </svg>
+      
+      <svg className="absolute bottom-0 left-1/4 w-72 h-72 animate-pulse-slow" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <path fill="currentColor" className="text-purple-400" d="M47.3,-79.5C61.1,-71.4,71.8,-57.3,78.2,-41.8C84.6,-26.3,86.7,-9.4,84.5,6.5C82.3,22.4,75.8,37.3,66.4,49.6C57,61.9,44.7,71.6,30.8,76.8C16.9,82,-8.6,82.7,-32.2,78.1C-55.8,73.5,-77.5,63.6,-87.3,47.8C-97.1,32,-95,10.3,-89.7,-9.1C-84.4,-28.5,-75.9,-45.6,-63.5,-53.3C-51.1,-61,-35,-59.3,-20.5,-67.8C-6,-76.3,6.9,-95,21.5,-98.5C36.1,-102,50.4,-90.3,47.3,-79.5Z" transform="translate(100 100)" />
+      </svg>
+
+      <div className="absolute top-20 left-10 w-2 h-2 bg-orange-400 rounded-full animate-ping" style={{ animationDelay: '0s' }}></div>
+      <div className="absolute top-40 right-20 w-2 h-2 bg-blue-400 rounded-full animate-ping" style={{ animationDelay: '1s' }}></div>
+      <div className="absolute bottom-20 left-1/3 w-2 h-2 bg-purple-400 rounded-full animate-ping" style={{ animationDelay: '2s' }}></div>
+    </div>
+  );
+};
 
 const Hero: React.FC = () => {
+  const cardRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      if (!cardRef.current) return;
+      
+      const cards = cardRef.current.querySelectorAll('.tilt-card');
+      cards.forEach((card) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        
+        const rotateX = (y - centerY) / 20;
+        const rotateY = (centerX - x) / 20;
+        
+        (card as HTMLElement).style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+      });
+    };
+
+    const handleMouseLeave = () => {
+      if (!cardRef.current) return;
+      const cards = cardRef.current.querySelectorAll('.tilt-card');
+      cards.forEach((card) => {
+        (card as HTMLElement).style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
+      });
+    };
+
+    document.addEventListener('mousemove', handleMouseMove);
+    document.addEventListener('mouseleave', handleMouseLeave);
+
+    return () => {
+      document.removeEventListener('mousemove', handleMouseMove);
+      document.removeEventListener('mouseleave', handleMouseLeave);
+    };
+  }, []);
+
   return (
-    <section id="accueil" className="pt-20 pb-12 px-4 sm:px-6 lg:px-8 animate-fade-in-down">
-      <div className="container mx-auto max-w-5xl">
-        <div className="flex flex-col md:flex-row gap-10 items-start">
-          {/* Profile Card - Left Side */}
-          <div className="w-full md:w-80 shrink-0">
-            <div className="bg-card text-card-foreground border border-border rounded-lg p-6 sticky top-24 shadow-sm">
-              <div className="flex flex-col items-center text-center">
-                <div className="w-32 h-32 rounded-full bg-gradient-to-br from-primary/10 via-muted to-background flex items-center justify-center mb-4 ring-4 ring-background animate-subtle-glow">
-                  <span className="text-5xl font-bold text-primary">JD</span>
+    <section id="accueil" className="pt-4 pb-4 px-3 sm:px-5 lg:px-6 relative overflow-hidden">
+      <BackgroundVectors />
+      
+      <style>{`
+        @keyframes float {
+          0%, 100% { transform: translate(0, 0) rotate(0deg); }
+          33% { transform: translate(30px, -30px) rotate(120deg); }
+          66% { transform: translate(-20px, 20px) rotate(240deg); }
+        }
+        
+        @keyframes float-delayed {
+          0%, 100% { transform: translate(0, 0) rotate(0deg); }
+          33% { transform: translate(-30px, 30px) rotate(-120deg); }
+          66% { transform: translate(20px, -20px) rotate(-240deg); }
+        }
+        
+        @keyframes pulse-slow {
+          0%, 100% { opacity: 0.1; transform: scale(1); }
+          50% { opacity: 0.2; transform: scale(1.1); }
+        }
+        
+        @keyframes gradient-shift {
+          0%, 100% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+        }
+        
+        @keyframes fade-in-down {
+          from {
+            opacity: 0;
+            transform: translateY(-20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        
+        @keyframes scale-in {
+          from {
+            opacity: 0;
+            transform: scale(0.9);
+          }
+          to {
+            opacity: 1;
+            transform: scale(1);
+          }
+        }
+        
+        .animate-float {
+          animation: float 20s ease-in-out infinite;
+        }
+        
+        .animate-float-delayed {
+          animation: float-delayed 25s ease-in-out infinite;
+        }
+        
+        .animate-pulse-slow {
+          animation: pulse-slow 4s ease-in-out infinite;
+        }
+        
+        .animate-fade-in-down {
+          animation: fade-in-down 0.6s ease-out;
+        }
+        
+        .animate-scale-in {
+          animation: scale-in 0.5s ease-out;
+        }
+        
+        .gradient-animated {
+          background: linear-gradient(135deg, #FED7AA 0%, #FDBA74 50%, #FB923C 100%);
+          background-size: 200% 200%;
+          animation: gradient-shift 3s ease infinite;
+        }
+        
+        .tilt-card {
+          transition: transform 0.1s ease-out;
+          transform-style: preserve-3d;
+        }
+        
+        .skill-badge {
+          transition: all 0.3s ease;
+        }
+        
+        .skill-badge:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 4px 12px rgba(251, 146, 60, 0.3);
+        }
+        
+        .glass-effect {
+          background: rgba(255, 255, 255, 0.1);
+          backdrop-filter: blur(10px);
+          border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+      `}</style>
+
+      <div ref={cardRef} className="container mx-auto max-w-7xl relative z-10 animate-fade-in-down">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+
+          {/* Left Column */}
+          <div className="flex flex-col gap-3">
+            {/* Profile Card */}
+            <BentoGridItem className="bg-orange-50 dark:bg-gray-800 shadow-lg hover:shadow-2xl transition-all duration-500 border-none tilt-card relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-orange-200/20 via-transparent to-blue-200/20 pointer-events-none"></div>
+              <div className="flex flex-col items-center text-center h-full justify-center p-4 sm:p-5 relative z-10">
+                <div className="w-24 h-24 rounded-full gradient-animated flex items-center justify-center mb-3 ring-4 ring-white/50 dark:ring-gray-700/50 shadow-xl animate-scale-in">
+                  <span className="text-3xl font-bold text-white drop-shadow-lg">SS</span>
                 </div>
-                <h1 className="text-2xl font-bold mb-1">Jean Dupont</h1>
-                <p className="text-muted-foreground mb-4">Développeur Full-Stack</p>
-                
-                <Button className="w-full mb-3" asChild>
-                  <a href="#contact">
-                    <MailIcon className="mr-2 h-4 w-4" />
-                    Contact
-                  </a>
-                </Button>
-                
-                <div className="flex gap-2 w-full">
-                  <Button variant="outline" size="icon" className="flex-1 transition-transform hover:scale-105" asChild>
+                <h1 className="text-2xl font-bold mb-1 animate-scale-in" style={{ animationDelay: '0.1s' }}>Sékou Sallah Sow</h1>
+                <p className="text-muted-foreground mb-3 animate-scale-in" style={{ animationDelay: '0.2s' }}>DEVELOPPEUR – DEVOPS OFFICER</p>
+                <div className="flex items-center gap-2 text-sm text-muted-foreground mb-3 animate-scale-in" style={{ animationDelay: '0.3s' }}>
+                    <MapPinIcon className="h-3.5 w-3.5 shrink-0 animate-pulse" />
+                    <span>Mali, Bamako</span>
+                </div>
+                <div className="flex gap-2 w-full max-w-xs animate-scale-in" style={{ animationDelay: '0.4s' }}>
+                  <Button className="flex-1 transition-all duration-300 hover:scale-105 hover:shadow-lg" size="sm" asChild>
+                    <a href="#contact">
+                      <MailIcon className="mr-1.5 h-3.5 w-3.5" />
+                      Contact
+                    </a>
+                  </Button>
+                  <Button variant="outline" size="icon" className="h-8 w-8 transition-all duration-300 hover:scale-110 hover:rotate-6 hover:shadow-md" asChild>
                     <a href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="Profil GitHub">
-                      <GithubIcon className="h-4 w-4" />
+                      <img src="components/projetmedia/github.png" alt="GitHub" className="h-6 w-6" />
                     </a>
                   </Button>
-                  <Button variant="outline" size="icon" className="flex-1 transition-transform hover:scale-105" asChild>
+                  <Button variant="outline" size="icon" className="h-8 w-8 transition-all duration-300 hover:scale-110 hover:rotate-6 hover:shadow-md" asChild>
                     <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="Profil LinkedIn">
-                      <LinkedinIcon className="h-4 w-4" />
+                      <img src="components/projetmedia/linkedin (1).png" alt="LinkedIn" className="h-6 w-6" />
+                    </a>
+                  </Button>
+                  <Button variant="none" size="icon" className="h-8 w-8 transition-all duration-300 hover:scale-110 hover:rotate-6" >
+                    <a href="https://whatsapp.com" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+                      <img src="components/projetmedia/whatsapp (2).png" alt="WhatsApp" className="h-8 w-8" />
                     </a>
                   </Button>
                 </div>
-
-                <div className="w-full mt-6 pt-6 border-t border-border text-left space-y-3">
-                  <div className="flex items-center gap-3 text-sm text-muted-foreground">
-                    <MapPinIcon className="h-4 w-4 shrink-0" />
-                    <span>Paris, France</span>
-                  </div>
-                  <div className="flex items-center gap-3 text-sm text-muted-foreground">
-                    <LinkIcon className="h-4 w-4 shrink-0" />
-                    <a href="#" className="hover:text-primary transition-colors">monportfolio.dev</a>
-                  </div>
-                </div>
               </div>
+            </BentoGridItem>
+
+            {/* Highlights */}
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+              <BentoGridItem className="bg-orange-50 dark:bg-gray-800 shadow-lg hover:shadow-xl transition-all duration-300 border-none h-auto skill-badge relative overflow-hidden group">
+                <div className="absolute inset-0 bg-gradient-to-br from-orange-400/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="flex items-center h-full p-2 relative z-10">
+                    <div className="rounded-full mr-2 transition-transform duration-300 group-hover:scale-110">
+                        <img src="components/projetmedia/la-toile.png" alt="Frontend" className="h-7 w-7" />
+                    </div>
+                    <div className="flex-grow">
+                        <h3 className="font-medium text-sm">Frontend</h3>
+                    </div>
+                    <div className="ml-auto bg-primary/10 rounded-full px-1 py-1 text-xs font-medium text-primary transition-all duration-300 group-hover:bg-primary group-hover:text-white">
+                        +12
+                    </div>
+                </div>
+              </BentoGridItem>
+              
+              <BentoGridItem className="bg-orange-50 dark:bg-gray-800 shadow-lg hover:shadow-xl transition-all duration-300 border-none h-auto skill-badge relative overflow-hidden group">
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-400/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="flex items-center h-full p-2 relative z-10">
+                    <div className="rounded-full mr-2 transition-transform duration-300 group-hover:scale-110">
+                        <img src="components/projetmedia/back-end.png" alt="Backend" className="h-7 w-7" />
+                    </div>
+                    <div className="flex-grow">
+                        <h3 className="font-medium text-sm">Backend</h3>
+                    </div>
+                    <div className="ml-auto bg-primary/10 rounded-full px-1 py-1 text-xs font-medium text-primary transition-all duration-300 group-hover:bg-primary group-hover:text-white">
+                        +8
+                    </div>
+                </div>
+              </BentoGridItem>
+              
+              <BentoGridItem className="bg-orange-50 dark:bg-gray-800 shadow-lg hover:shadow-xl transition-all duration-300 border-none h-auto skill-badge relative overflow-hidden group">
+                <div className="absolute inset-0 bg-gradient-to-br from-purple-400/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="flex items-center h-full p-2 relative z-10">
+                    <div className="p-2 rounded-full bg-background/50 mr-1 transition-transform duration-300 group-hover:scale-110">
+                        <img src="components/projetmedia/application-cloud.png" alt="DevOps" className="h-7 w-7" />
+                    </div>
+                    <div className="flex-grow">
+                        <h3 className="font-medium text-sm">DevOps</h3>
+                    </div>
+                    <div className="ml-auto bg-primary/10 rounded-full px-2 py-1 text-xs font-medium text-primary transition-all duration-300 group-hover:bg-primary group-hover:text-white">
+                        +5
+                    </div>
+                </div>
+              </BentoGridItem>
             </div>
           </div>
 
-          {/* Main Content - Right Side */}
-          <div className="flex-1 space-y-6">
-            <div id="a-propos" className="bg-card text-card-foreground border border-border rounded-lg p-6 scroll-mt-20 shadow-sm">
-              <h2 className="text-xl font-semibold mb-4">À propos</h2>
-              <p className="text-muted-foreground leading-relaxed text-base">
-                Développeur full-stack passionné avec 5+ années d'expérience dans la création 
-                d'applications web modernes. Spécialisé en React, TypeScript et Node.js, 
-                je conçois des solutions élégantes qui allient performance et expérience utilisateur.
-              </p>
-            </div>
+          {/* Right Column */}
+          <div className="flex flex-col gap-3">
+            {/* Vidéo */}
+            <BentoGridItem className="p-0 overflow-hidden h-64 transition-all duration-500 bg-orange-50 dark:bg-gray-800 border-none tilt-card group relative">
+              <div className="absolute inset-0 bg-gradient-to-t from-orange-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 pointer-events-none"></div>
+              <video 
+                  src="/projetmedia/projetpy.mp4"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+              />
+            </BentoGridItem>
 
-            <div className="bg-card text-card-foreground border border-border rounded-lg p-6 shadow-sm">
-              <h2 className="text-xl font-semibold mb-4">Highlights</h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="group flex items-start gap-4 rounded-lg p-4 transition-colors hover:bg-accent">
-                  <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 ring-4 ring-background group-hover:bg-primary/20 transition-all">
-                    <span className="text-2xl" role="img" aria-label="Fusée">🚀</span>
-                  </div>
-                  <div>
-                    <h3 className="font-medium mb-1 group-hover:text-primary transition-colors">Performance</h3>
-                    <p className="text-sm text-muted-foreground">Applications optimisées et rapides</p>
-                  </div>
-                </div>
-                <div className="group flex items-start gap-4 rounded-lg p-4 transition-colors hover:bg-accent">
-                  <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 ring-4 ring-background group-hover:bg-primary/20 transition-all">
-                    <span className="text-2xl" role="img" aria-label="Palette d'artiste">🎨</span>
-                  </div>
-                  <div>
-                    <h3 className="font-medium mb-1 group-hover:text-primary transition-colors">Design</h3>
-                    <p className="text-sm text-muted-foreground">UI/UX modernes et intuitives</p>
-                  </div>
-                </div>
+            {/* About Me */}
+            <BentoGridItem className="flex-grow bg-orange-50 dark:bg-gray-800 shadow-lg hover:shadow-xl transition-all duration-500 border-none tilt-card relative overflow-hidden group">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-orange-400/20 to-transparent rounded-full blur-3xl group-hover:scale-150 transition-transform duration-700"></div>
+              <div className="flex flex-col h-full p-3 sm:p-3 relative z-10">
+                <h2 className="text-lg font-semibold mb-3 flex items-center gap-2">
+                  À propos
+                  <span className="inline-block w-2 h-2 bg-orange-500 rounded-full animate-pulse"></span>
+                </h2>
+                <p className="text-gray-900 dark:text-orange-50 leading-relaxed text-sm">
+                  Développeur et DevOps Officer passionné par les technologies modernes et l'automatisation. 
+                  Expérimenté en développement d'application, CI/CD, Docker et kubernetes. Engagé à concevoir des 
+                  solutions fiables et adoptées aux besoins des entreprises.
+                </p>
               </div>
-            </div>
+            </BentoGridItem>
           </div>
+
         </div>
       </div>
     </section>

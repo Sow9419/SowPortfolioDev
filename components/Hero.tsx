@@ -10,71 +10,11 @@ import MapPinIcon from './icons/MapPinIcon';
 import LinkIcon from './icons/LinkIcon';
 import { BentoGridItem } from './ui/bento-grid';
 
-const BackgroundVectors = () => {
-  return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-10">
-      <svg className="absolute top-0 left-0 w-96 h-96 animate-float" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-        <path fill="currentColor" className="text-orange-400" d="M44.7,-76.4C58.8,-69.2,71.8,-59.1,79.9,-45.8C88,-32.4,91.2,-16.2,90.1,-0.5C89,15.2,83.6,30.4,75.4,43.9C67.2,57.4,56.2,69.2,42.8,76.8C29.4,84.4,14.7,87.8,-0.3,88.3C-15.3,88.8,-30.6,86.4,-44.3,79.1C-58,71.8,-70.1,59.6,-78.2,45.2C-86.3,30.8,-90.4,14.2,-89.7,-2.1C-89,-18.4,-83.5,-36.8,-74.3,-50.7C-65.1,-64.6,-52.2,-74,-38.1,-80.8C-24,-87.6,-8.8,-91.8,4.6,-98.9C18,-106,33.9,-116,44.7,-76.4Z" transform="translate(100 100)" />
-      </svg>
-      
-      <svg className="absolute top-1/4 right-0 w-80 h-80 animate-float-delayed" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-        <path fill="currentColor" className="text-blue-400" d="M39.5,-66.3C51.4,-58.5,61.4,-47.6,67.8,-35.1C74.2,-22.6,77,-8.5,76.3,5.7C75.6,19.9,71.4,34.2,63.4,45.8C55.4,57.4,43.6,66.3,30.4,71.1C17.2,75.9,2.6,76.6,-12.3,75.4C-27.2,74.2,-42.4,71.1,-55.1,63.5C-67.8,55.9,-78,43.8,-82.7,30.1C-87.4,16.4,-86.6,1.1,-82.3,-12.8C-78,-26.7,-70.2,-39.2,-59.6,-47.5C-49,-55.8,-35.6,-59.9,-22.8,-67.3C-10,-74.7,2.2,-85.4,14.8,-87.2C27.4,-89,40.4,-82,39.5,-66.3Z" transform="translate(100 100)" />
-      </svg>
-      
-      <svg className="absolute bottom-0 left-1/4 w-72 h-72 animate-pulse-slow" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-        <path fill="currentColor" className="text-purple-400" d="M47.3,-79.5C61.1,-71.4,71.8,-57.3,78.2,-41.8C84.6,-26.3,86.7,-9.4,84.5,6.5C82.3,22.4,75.8,37.3,66.4,49.6C57,61.9,44.7,71.6,30.8,76.8C16.9,82,-8.6,82.7,-32.2,78.1C-55.8,73.5,-77.5,63.6,-87.3,47.8C-97.1,32,-95,10.3,-89.7,-9.1C-84.4,-28.5,-75.9,-45.6,-63.5,-53.3C-51.1,-61,-35,-59.3,-20.5,-67.8C-6,-76.3,6.9,-95,21.5,-98.5C36.1,-102,50.4,-90.3,47.3,-79.5Z" transform="translate(100 100)" />
-      </svg>
-
-      <div className="absolute top-20 left-10 w-2 h-2 bg-orange-400 rounded-full animate-ping" style={{ animationDelay: '0s' }}></div>
-      <div className="absolute top-40 right-20 w-2 h-2 bg-blue-400 rounded-full animate-ping" style={{ animationDelay: '1s' }}></div>
-      <div className="absolute bottom-20 left-1/3 w-2 h-2 bg-purple-400 rounded-full animate-ping" style={{ animationDelay: '2s' }}></div>
-    </div>
-  );
-};
-
 const Hero: React.FC = () => {
   const cardRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      if (!cardRef.current) return;
-      
-      const cards = cardRef.current.querySelectorAll('.tilt-card');
-      cards.forEach((card) => {
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
-        
-        const rotateX = (y - centerY) / 20;
-        const rotateY = (centerX - x) / 20;
-        
-        (card as HTMLElement).style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
-      });
-    };
-
-    const handleMouseLeave = () => {
-      if (!cardRef.current) return;
-      const cards = cardRef.current.querySelectorAll('.tilt-card');
-      cards.forEach((card) => {
-        (card as HTMLElement).style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
-      });
-    };
-
-    document.addEventListener('mousemove', handleMouseMove);
-    document.addEventListener('mouseleave', handleMouseLeave);
-
-    return () => {
-      document.removeEventListener('mousemove', handleMouseMove);
-      document.removeEventListener('mouseleave', handleMouseLeave);
-    };
-  }, []);
-
   return (
     <section id="accueil" className="pt-4 pb-4 px-3 sm:px-5 lg:px-6 relative overflow-hidden">
-      <BackgroundVectors />
       
       <style>{`
         @keyframes float {
@@ -147,11 +87,6 @@ const Hero: React.FC = () => {
           animation: gradient-shift 3s ease infinite;
         }
         
-        .tilt-card {
-          transition: transform 0.1s ease-out;
-          transform-style: preserve-3d;
-        }
-        
         .skill-badge {
           transition: all 0.3s ease;
         }
@@ -174,7 +109,7 @@ const Hero: React.FC = () => {
           {/* Left Column */}
           <div className="flex flex-col gap-3">
             {/* Profile Card */}
-            <BentoGridItem className="bg-orange-50 dark:bg-gray-800 shadow-lg hover:shadow-2xl transition-all duration-500 border-none tilt-card relative overflow-hidden">
+            <BentoGridItem className="bg-orange-50 dark:bg-gray-800 shadow-lg hover:shadow-2xl transition-all duration-500 border-none relative overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-br from-orange-200/20 via-transparent to-blue-200/20 pointer-events-none"></div>
               <div className="flex flex-col items-center text-center h-full justify-center p-4 sm:p-5 relative z-10">
                 <div className="w-24 h-24 rounded-full gradient-animated flex items-center justify-center mb-3 ring-4 ring-white/50 dark:ring-gray-700/50 shadow-xl animate-scale-in">
@@ -200,12 +135,12 @@ const Hero: React.FC = () => {
                   </Button>
                   <Button variant="outline" size="icon" className="h-8 w-8 transition-all duration-300 hover:scale-110 hover:rotate-6 hover:shadow-md" asChild>
                     <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="Profil LinkedIn">
-                      <img src="components/projetmedia/linkedin (1).png" alt="LinkedIn" className="h-6 w-6" />
+                      <img src="components\projetmedia\linkedin.png" alt="LinkedIn" className="h-6 w-6" />
                     </a>
                   </Button>
                   <Button variant="none" size="icon" className="h-8 w-8 transition-all duration-300 hover:scale-110 hover:rotate-6" >
                     <a href="https://whatsapp.com" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
-                      <img src="components/projetmedia/whatsapp (2).png" alt="WhatsApp" className="h-8 w-8" />
+                      <img src="components\projetmedia\whatsapp (2).png" alt="WhatsApp" className="h-7 w-7" />
                     </a>
                   </Button>
                 </div>
@@ -218,7 +153,7 @@ const Hero: React.FC = () => {
                 <div className="absolute inset-0 bg-gradient-to-br from-orange-400/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 <div className="flex items-center h-full p-2 relative z-10">
                     <div className="rounded-full mr-2 transition-transform duration-300 group-hover:scale-110">
-                        <img src="components/projetmedia/la-toile.png" alt="Frontend" className="h-7 w-7" />
+                        <img src="components\projetmedia\ux-design.png" alt="Frontend" className="h-7 w-7" />
                     </div>
                     <div className="flex-grow">
                         <h3 className="font-medium text-sm">Frontend</h3>
@@ -233,7 +168,7 @@ const Hero: React.FC = () => {
                 <div className="absolute inset-0 bg-gradient-to-br from-blue-400/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 <div className="flex items-center h-full p-2 relative z-10">
                     <div className="rounded-full mr-2 transition-transform duration-300 group-hover:scale-110">
-                        <img src="components/projetmedia/back-end.png" alt="Backend" className="h-7 w-7" />
+                        <img src="components\projetmedia\continuous.png" alt="Backend" className="h-7 w-7" />
                     </div>
                     <div className="flex-grow">
                         <h3 className="font-medium text-sm">Backend</h3>
@@ -248,7 +183,7 @@ const Hero: React.FC = () => {
                 <div className="absolute inset-0 bg-gradient-to-br from-purple-400/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 <div className="flex items-center h-full p-2 relative z-10">
                     <div className="p-2 rounded-full bg-background/50 mr-1 transition-transform duration-300 group-hover:scale-110">
-                        <img src="components/projetmedia/application-cloud.png" alt="DevOps" className="h-7 w-7" />
+                        <img src="components\projetmedia\server-control.png" alt="DevOps" className="h-7 w-7" />
                     </div>
                     <div className="flex-grow">
                         <h3 className="font-medium text-sm">DevOps</h3>
@@ -264,20 +199,16 @@ const Hero: React.FC = () => {
           {/* Right Column */}
           <div className="flex flex-col gap-3">
             {/* Vidéo */}
-            <BentoGridItem className="p-0 overflow-hidden h-64 transition-all duration-500 bg-orange-50 dark:bg-gray-800 border-none tilt-card group relative">
+            <BentoGridItem className="p-0 overflow-hidden h-64 transition-all duration-500 bg-orange-50 dark:bg-gray-800 border-none group relative">
               <div className="absolute inset-0 bg-gradient-to-t from-orange-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 pointer-events-none"></div>
-              <video 
-                  src="/projetmedia/projetpy.mp4"
+              <img 
+                  src="components\projetmedia\510bbf476ada9dc8786c983a252c07c7.jpg"
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
               />
             </BentoGridItem>
 
             {/* About Me */}
-            <BentoGridItem className="flex-grow bg-orange-50 dark:bg-gray-800 shadow-lg hover:shadow-xl transition-all duration-500 border-none tilt-card relative overflow-hidden group">
+            <BentoGridItem className="flex-grow bg-orange-50 dark:bg-gray-800 shadow-lg hover:shadow-xl transition-all duration-500 border-none relative overflow-hidden group">
               <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-orange-400/20 to-transparent rounded-full blur-3xl group-hover:scale-150 transition-transform duration-700"></div>
               <div className="flex flex-col h-full p-3 sm:p-3 relative z-10">
                 <h2 className="text-lg font-semibold mb-3 flex items-center gap-2">

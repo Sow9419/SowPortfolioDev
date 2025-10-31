@@ -19,12 +19,12 @@ const Header: React.FC<HeaderProps> = ({ theme, toggleTheme }) => {
   const [activeSection, setActiveSection] = useState('accueil');
 
   const navItems: NavItem[] = [
-    { id: 'accueil', icon: <Home className="w-6 h-6" />, label: 'Accueil' },
-    { id: 'a-propos', icon: <User className="w-6 h-6" />, label: 'À propos' },
-    { id: 'compétences', icon: <Wrench className="w-6 h-6" />, label: 'Compétences' },
-    { id: 'projets', icon: <FolderGit2 className="w-6 h-6" />, label: 'Projets' },
-    { id: 'experience', icon: <Briefcase className="w-6 h-6" />, label: 'Expérience' },
-    { id: 'contact', icon: <Mail className="w-6 h-6" />, label: 'Contact' },
+    { id: 'accueil', icon: <Home className="w-4 h-4" />, label: 'Accueil' },
+    { id: 'a-propos', icon: <User className="w-4 h-4" />, label: 'À propos' },
+    { id: 'compétences', icon: <Wrench className="w-4 h-4" />, label: 'Compétences' },
+    { id: 'projets', icon: <FolderGit2 className="w-4 h-4" />, label: 'Projets' },
+    { id: 'experience', icon: <Briefcase className="w-4 h-4" />, label: 'Expérience' },
+    { id: 'contact', icon: <Mail className="w-4 h-4" />, label: 'Contact' },
   ];
 
   const handleNavigation = (id: string) => {
@@ -35,14 +35,14 @@ const Header: React.FC<HeaderProps> = ({ theme, toggleTheme }) => {
 
   return (
     <>
-      <header className="fixed left-0 top-0 h-screen z-50 hidden lg:flex flex-col w-20 bg-background/95 backdrop-blur-xl border-r border-border/30 py-8 gap-6 items-center shadow-lg">
+      <header className="hidden lg:flex flex-col h-screen sticky top-0 z-50 w-20 bg-background/95 backdrop-blur-xl border-r border-border/30 py-8 gap-6 items-center shadow-lg">
         <a
           href="#accueil"
           onClick={(e) => {
             e.preventDefault();
             handleNavigation('accueil');
           }}
-          className="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary to-primary/70 flex items-center justify-center text-white font-bold text-lg hover:shadow-lg hover:scale-110 transition-all duration-300 mb-4"
+          className="w-auto h-auto p-2 rounded-full bg-gradient-to-br from-primary to-primary/70 flex items-center justify-center text-white font-bold text-lg hover:shadow-lg hover:scale-110 transition-all duration-300 mb-4"
         >
           JD
         </a>
@@ -53,14 +53,14 @@ const Header: React.FC<HeaderProps> = ({ theme, toggleTheme }) => {
               key={item.id}
               onClick={() => handleNavigation(item.id)}
               title={item.label}
-              className={`w-14 h-14 rounded-2xl flex items-center justify-center transition-all duration-300 group relative ${
+              className={`w-8 h-8 rounded-2xl flex items-center justify-center transition-all duration-300 group relative ${
                 activeSection === item.id
                   ? 'bg-primary text-white shadow-lg scale-110'
                   : 'text-muted-foreground hover:text-primary hover:bg-accent/50 hover:scale-105'
               }`}
             >
               {item.icon}
-              <span className="absolute left-20 bg-background border border-border/30 rounded-lg px-3 py-1 text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap">
+              <span className="absolute left-16 bg-background border border-border/30 rounded-lg px-3 py-1 text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap">
                 {item.label}
               </span>
             </button>
@@ -93,7 +93,7 @@ const Header: React.FC<HeaderProps> = ({ theme, toggleTheme }) => {
             <button
               key={item.id}
               onClick={() => handleNavigation(item.id)}
-              className={`flex flex-col items-center justify-center w-16 h-16 rounded-2xl transition-all duration-300 ${
+              className={`flex flex-col items-center justify-center w-10 h-10 rounded-2xl transition-all duration-300 ${
                 activeSection === item.id
                   ? 'bg-primary text-white scale-110 shadow-lg'
                   : 'text-muted-foreground hover:text-primary'
@@ -105,7 +105,7 @@ const Header: React.FC<HeaderProps> = ({ theme, toggleTheme }) => {
           ))}
           <button
             onClick={toggleTheme}
-            className="flex items-center justify-center w-16 h-16 rounded-2xl text-muted-foreground hover:text-primary hover:bg-accent/50 transition-all duration-300"
+            className="flex items-center justify-center w-10 h-10 rounded-2xl text-muted-foreground hover:text-primary hover:bg-accent/50 transition-all duration-300"
             aria-label="Toggle theme"
           >
             <div className="relative w-6 h-6">

@@ -56,11 +56,38 @@ export default function Formation() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
 
+  const colorStyles: { [key: string]: { border: string; shadow: string; text: string; bg: string; } } = {
+    blue: {
+      border: 'border-blue-600 dark:border-blue-400',
+      shadow: 'shadow-blue-500/30 dark:shadow-blue-400/20',
+      text: 'text-blue-600 dark:text-blue-400',
+      bg: 'bg-blue-400',
+    },
+    purple: {
+      border: 'border-purple-600 dark:border-purple-400',
+      shadow: 'shadow-purple-500/30 dark:shadow-purple-400/20',
+      text: 'text-purple-600 dark:text-purple-400',
+      bg: 'bg-purple-400',
+    },
+    emerald: {
+      border: 'border-emerald-600 dark:border-emerald-400',
+      shadow: 'shadow-emerald-500/30 dark:shadow-emerald-400/20',
+      text: 'text-emerald-600 dark:text-emerald-400',
+      bg: 'bg-emerald-400',
+    },
+    amber: {
+      border: 'border-amber-600 dark:border-amber-400',
+      shadow: 'shadow-amber-500/30 dark:shadow-amber-400/20',
+      text: 'text-amber-600 dark:text-amber-400',
+      bg: 'bg-amber-400',
+    },
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 py-20 px-4 sm:px-6 lg:px-8 transition-colors duration-300">
       <div className="max-w-7xl mx-auto">
         {/* Header Section Ultra Moderne */}
-        <div className="text-center mb-24 relative">
+        <div className="text-center mb-6 relative">
           {/* Animated Background Elements */}
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
             <div className="absolute top-1/2 left-1/4 w-96 h-96 bg-blue-500/10 dark:bg-blue-500/5 rounded-full blur-3xl animate-pulse"></div>
@@ -72,16 +99,6 @@ export default function Formation() {
               <Sparkles className="w-5 h-5 text-blue-600 dark:text-blue-400 animate-spin" style={{ animationDuration: '3s' }} />
               <span className="text-sm font-semibold text-slate-700 dark:text-slate-300">Parcours Académique</span>
             </div>
-            
-            <div className="flex items-center justify-center gap-4 mb-6">
-              <div className="h-1 w-20 bg-gradient-to-r from-transparent via-blue-600 to-transparent dark:via-blue-400 rounded-full"></div>
-              <div className="w-3 h-3 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 animate-pulse"></div>
-              <div className="h-1 w-20 bg-gradient-to-r from-transparent via-purple-600 to-transparent dark:via-purple-400 rounded-full"></div>
-            </div>
-            
-            <p className="mt-6 text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed">
-              De l'excellence académique à l'expertise technique, découvrez mon parcours de formation
-            </p>
           </div>
         </div>
 
@@ -99,6 +116,7 @@ export default function Formation() {
               const isEven = index % 2 === 0;
               const isHovered = hoveredIndex === index;
               const isSelected = selectedIndex === index;
+              const styles = colorStyles[formation.color];
 
               return (
                 <div
@@ -118,7 +136,7 @@ export default function Formation() {
                       <div className={`absolute inset-0 rounded-full bg-gradient-to-br ${formation.gradient} opacity-20 animate-pulse`}></div>
                       
                       {/* Middle Ring */}
-                      <div className={`absolute inset-2 rounded-full bg-white dark:bg-slate-900 border-4 border-${formation.color}-600 dark:border-${formation.color}-400 transition-all duration-500`}></div>
+                      <div className={`absolute inset-2 rounded-full bg-white dark:bg-slate-900 border-4 ${styles.border} transition-all duration-500`}></div>
                       
                       {/* Inner Icon */}
                       <div className={`absolute inset-4 rounded-full bg-gradient-to-br ${formation.gradient} flex items-center justify-center shadow-2xl`}>
@@ -128,8 +146,8 @@ export default function Formation() {
                       {/* Animated Rings */}
                       {isHovered && (
                         <>
-                          <div className={`absolute inset-0 rounded-full border-2 border-${formation.color}-600 dark:border-${formation.color}-400 animate-ping`}></div>
-                          <div className={`absolute inset-0 rounded-full border border-${formation.color}-600 dark:border-${formation.color}-400 animate-pulse`}></div>
+                          <div className={`absolute inset-0 rounded-full border-2 ${styles.border} animate-ping`}></div>
+                          <div className={`absolute inset-0 rounded-full border ${styles.border} animate-pulse`}></div>
                         </>
                       )}
                     </div>
@@ -141,7 +159,7 @@ export default function Formation() {
                       onClick={() => setSelectedIndex(isSelected ? null : index)}
                       className={`group relative bg-white/80 dark:bg-slate-900/80 backdrop-blur-2xl rounded-3xl p-8 border-2 cursor-pointer overflow-hidden transition-all duration-700 ${
                         isHovered || isSelected
-                          ? `border-${formation.color}-600 dark:border-${formation.color}-400 shadow-2xl shadow-${formation.color}-500/30 dark:shadow-${formation.color}-400/20 scale-105`
+                          ? `${styles.border} shadow-2xl ${styles.shadow}`
                           : 'border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 shadow-lg'
                       }`}
                     >
@@ -153,7 +171,7 @@ export default function Formation() {
                         {[...Array(5)].map((_, i) => (
                           <div
                             key={i}
-                            className={`absolute w-2 h-2 bg-${formation.color}-400 rounded-full opacity-0 group-hover:opacity-60 transition-all duration-1000`}
+                            className={`absolute w-2 h-2 ${styles.bg} rounded-full opacity-0 group-hover:opacity-60 transition-all duration-1000`}
                             style={{
                               left: `${20 + i * 15}%`,
                               bottom: '-10px',
@@ -200,7 +218,7 @@ export default function Formation() {
 
                         {/* Diplôme */}
                         <div className="flex items-start gap-3 mb-6 p-4 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border border-slate-200 dark:border-slate-700">
-                          <Award className={`w-6 h-6 text-${formation.color}-600 dark:text-${formation.color}-400 flex-shrink-0 mt-0.5`} />
+                          <Award className={`w-6 h-6 ${styles.text} flex-shrink-0 mt-0.5`} />
                           <p className="text-slate-700 dark:text-slate-300 font-semibold leading-relaxed">
                             {formation.diplome}
                           </p>
@@ -225,7 +243,7 @@ export default function Formation() {
                           <div className="mb-6">
                             <div className="flex justify-between items-center mb-2">
                               <span className="text-xs font-semibold text-slate-600 dark:text-slate-400">Progression</span>
-                              <span className={`text-xs font-bold text-${formation.color}-600 dark:text-${formation.color}-400`}>{formation.progress}%</span>
+                              <span className={`text-xs font-bold ${styles.text}`}>{formation.progress}%</span>
                             </div>
                             <div className="h-2 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden">
                               <div

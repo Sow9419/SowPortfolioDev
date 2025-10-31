@@ -114,7 +114,7 @@ export function Experience() {
     <section 
       ref={sectionRef}
       id="experience" 
-      className="py-20 px-4 sm:px-6 lg:px-8 scroll-mt-20 relative overflow-hidden"
+      className="py-4 px-4 sm:px-6 lg:px-8 scroll-mt-20 relative overflow-hidden"
     >
       <style>{`
         @keyframes float-gentle {
@@ -222,17 +222,11 @@ export function Experience() {
 
       <div className="container mx-auto max-w-6xl relative z-10">
         {/* Header */}
-        <div className={`text-center mb-16 ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}>
+        <div className={`text-center mb-8 ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}>
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-orange-500/10 rounded-full mb-4">
             <Briefcase className="w-4 h-4 text-orange-500" />
             <span className="text-sm font-medium text-orange-500">Parcours Professionnel</span>
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-orange-500 via-red-500 to-purple-500 bg-clip-text text-transparent">
-            Expérience
-          </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            De la conception à la production, découvrez mon parcours technique et mes réalisations
-          </p>
         </div>
 
         {/* Timeline */}
@@ -247,10 +241,23 @@ export function Experience() {
                 className={`relative ${isVisible ? 'animate-slide-in-right' : 'opacity-0'}`}
                 style={{ animationDelay: `${index * 0.2}s` }}
               >
+                {/* Timeline Dot - Centered */}
+                <div className="hidden lg:block absolute left-1/2 top-0 transform -translate-x-1/2 z-20">
+                    <div className="relative">
+                      <div className={`w-16 h-16 rounded-full bg-gradient-to-br ${exp.color} flex items-center justify-center shadow-lg animate-pulse-glow`}>
+                        <div className="w-14 h-14 rounded-full bg-background flex items-center justify-center">
+                          <div className={`w-12 h-12 rounded-full bg-gradient-to-br ${exp.color} flex items-center justify-center text-white`}>
+                            {exp.icon}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
                 {/* Desktop Layout */}
                 <div className="hidden lg:grid lg:grid-cols-2 lg:gap-16 items-start">
                   {/* Left Side */}
-                  {index % 2 === 0 && (
+                  {index % 2 === 0 ? (
                     <div className="text-right pr-8">
                       <div
                         className="experience-card bg-card rounded-2xl p-6 shadow-xl border border-border hover:border-orange-500/50 cursor-pointer inline-block w-full"
@@ -314,23 +321,12 @@ export function Experience() {
                         </div>
                       </div>
                     </div>
+                  ) : (
+                    <div></div>
                   )}
 
-                  {/* Timeline Dot - Centered */}
-                  <div className="absolute left-1/2 top-0 transform -translate-x-1/2 z-20">
-                    <div className="relative">
-                      <div className={`w-16 h-16 rounded-full bg-gradient-to-br ${exp.color} flex items-center justify-center shadow-lg animate-pulse-glow`}>
-                        <div className="w-14 h-14 rounded-full bg-background flex items-center justify-center">
-                          <div className={`w-12 h-12 rounded-full bg-gradient-to-br ${exp.color} flex items-center justify-center text-white`}>
-                            {exp.icon}
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
                   {/* Right Side */}
-                  {index % 2 !== 0 && (
+                  {index % 2 !== 0 ? (
                     <div className="pl-8">
                       <div
                         className="experience-card bg-card rounded-2xl p-6 shadow-xl border border-border hover:border-orange-500/50 cursor-pointer"
@@ -394,10 +390,9 @@ export function Experience() {
                         </div>
                       </div>
                     </div>
+                  ) : (
+                    <div></div>
                   )}
-
-                  {/* Empty div for grid alignment when content is on left */}
-                  {index % 2 === 0 && <div></div>}
                 </div>
 
                 {/* Mobile/Tablet Layout */}
